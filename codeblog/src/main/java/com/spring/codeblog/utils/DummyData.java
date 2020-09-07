@@ -41,5 +41,4 @@ public class DummyData {
             System.out.println(postSaved.getId());
         }
     }
-
 }
