@@ -1,1 +1,68 @@
-<h1>Post Detail</h1>
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="pt-BR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <title>Blog</title>
+    <!--Css Boostrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+     JS Boostrap
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+
+    <!-- Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <!--Navbar-->
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" style="font-weight: bold">Blog</span>
+    </nav>
+</header>
+
+<main>
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+
+        <!--BreadCrumb-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0;">
+                <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Post</li>
+            </ol>
+        </nav>
+
+        <!--Estrutura do Post-->
+        <article>
+            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px">
+                <span th:text="${post.titulo}"></span>
+            </h1>
+
+            <p class="card-subtitle mb-2 text-muted">
+                <i class="material-icons">person_outline</i>
+                <span th:text="${post.autor}"></span>
+                <br>
+                <i class="material-icons">date_range</i>
+                <span th:text="${post.data}"></span>
+            </p>
+
+            <!--Conteúdo-->
+            <section>
+                <p class="card-text" style="margin-top: 40px;">
+                    <span th:utext="${post.texto}"></span>
+                </p>
+            </section>
+        </article>
+    </div>
+</main>
+</body>
+</html>
