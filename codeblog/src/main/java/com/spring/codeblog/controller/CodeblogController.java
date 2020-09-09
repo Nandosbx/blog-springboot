@@ -5,7 +5,6 @@ import com.spring.codeblog.service.CodeblogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,7 +29,7 @@ public class CodeblogController {
         return mv;
     }
 
-    @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/posts/{id}", method = RequestMethod.GET)
     public ModelAndView getPostDetails(@PathVariable("id") long id) {
         ModelAndView mv = new ModelAndView("postDetails");
         Post post = codeblogService.findById(id);
@@ -38,14 +37,15 @@ public class CodeblogController {
         return mv;
     }
 
-    @RequestMapping(value = "/newpost", method = RequestMethod.GET)
+    @RequestMapping(value="/newpost", method = RequestMethod.GET)
     public String getPostForm() {
         return "postForm";
     }
 
-    @RequestMapping(value = "/newpost", method = RequestMethod.POST)
+    @RequestMapping(value="/newpost", method = RequestMethod.POST)
     public String savePost(@Valid Post post, BindingResult result, RedirectAttributes attributes) {
         if(result.hasErrors()) {
+            attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatórios foram preenchidos.");
             return "redirect:/newpost";
         }
         post.setData(LocalDate.now());

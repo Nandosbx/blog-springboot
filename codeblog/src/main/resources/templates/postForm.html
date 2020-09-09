@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="pt-BR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://thymeleaf.org ">
+<html xmlns:th="https://thymeleaf.org" lang="pt-BR" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://thymeleaf.org ">
 <head>
     <title>Blog</title>
     <!--Css Boostrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <!--JS Boostrap-->
+    <!-- JS Boostrap-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
@@ -20,6 +20,12 @@
 
     <!-- Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 
 <body>
@@ -43,6 +49,8 @@
         </nav>
 
         <div>
+
+            <th:block th:include="mensagemValidacao"></th:block>
             <form method="post">
                 <div class="form-group">
                     <input type="text" class="form-control" name="titulo" placeholder="Título *">
@@ -52,7 +60,7 @@
                     <input type="text" class="form-control" name="autor" placeholder="Autor *">
                 </div>
 
-                <textarea type="text" class="form-control" name="texto" placeholder="Texto *" style="resize: none; height: 200px;"></textarea>
+                <textarea id="summernote" type="text" class="form-control" name="texto" placeholder="Texto *" ></textarea>
 
                 <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
@@ -66,5 +74,16 @@
 
     </div>
 </section>
+
+<script>
+    $('#summernote').summernote({
+        placeholder: 'Texto *',
+        tabsize: 2,
+        height: 300,
+        disableResizeEditor: true
+    });
+
+    $('.note-statusbar').hide();
+</script>
 </body>
 </html>
